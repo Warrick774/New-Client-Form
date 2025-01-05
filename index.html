@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Trainer Consultation Form - Part 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+        h1 {
+            text-align: center;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 20px 0 10px;
+            color: #444;
+            border-bottom: 2px solid #5cb85c;
+            padding-bottom: 5px;
+        }
+        label {
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #5cb85c;
+            outline: none;
+            box-shadow: 0 0 5px rgba(92, 184, 92, 0.5);
+        }
+        textarea {
+            resize: vertical;
+        }
+        .flex-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .flex-group > div {
+            flex: 1 1 calc(50% - 15px);
+        }
+        @media (max-width: 768px) {
+            .flex-group > div {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>New Client Form</h1>
+        <form action="https://formspree.io/f/xwppwqbq" method="POST">
+            <!-- Personal Information -->
+            <div class="section-title">Personal Information</div>
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+
+           <label for="dob">Date of Birth:</label>
+<input type="text" id="dob" name="dob" placeholder="DD/MM/YYYY" maxlength="10" required>
+
+<script>
+    const dobInput = document.getElementById('dob');
+
+    dobInput.addEventListener('input', function (e) {
+        // Get the current value and remove all non-digit characters
+        let value = e.target.value.replace(/\D/g, '');
+        
+        // Format the input as DD/MM/YYYY
+        if (value.length >= 3 && value.length <= 4) {
+            value = value.slice(0, 2) + '/' + value.slice(2);
+        } else if (value.length >= 5) {
+            value = value.slice(0, 2) + '/' + value.slice(2, 4) + '/' + value.slice(4, 8);
+        }
+        
+        // Update the input value, limiting it to 10 characters
+        e.target.value = value.slice(0, 10);
+    });
+</script>
+
+            <div class="flex-group">
+                <div>
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+                <div>
+                    <label for="gender">Gender:</label>
+                    <input type="text" id="gender" name="gender" required>
+                </div>
+            </div>
+
+            <div class="flex-group">
+                <div>
+                    <label for="height">Height (cm):</label>
+                    <input type="number" id="height" name="height" required>
+                </div>
+                <div>
+                    <label for="weight">Weight (kg):</label>
+                    <input type="number" id="weight" name="weight" required>
+                </div>
+            </div>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <div class="flex-group">
+                <div>
+                    <label for="emergencyContactName">Emergency Contact Name:</label>
+                    <input type="text" id="emergencyContactName" name="emergencyContactName" required>
+                </div>
+                <div>
+                    <label for="emergencyContactPhone">Emergency Contact Phone:</label>
+                    <input type="tel" id="emergencyContactPhone" name="emergencyContactPhone" required>
+                </div>
+            </div>
+
+            <!-- Lifestyle and Goals -->
+            <div class="section-title">Lifestyle and Goals</div>
+            <label for="goals">What are your primary fitness goals?</label>
+            <textarea id="goals" name="goals" placeholder="E.g., Weight loss, muscle gain, etc." required></textarea>
+
+            <label for="shortTermGoal">What is your short term goal?</label>
+            <textarea id="shortTermGoal" name="shortTermGoal" required></textarea>
+
+            <label for="longTermGoal">What is your long term goal?</label>
+            <textarea id="longTermGoal" name="longTermGoal" required></textarea>
+
+            <label for="motivation">What motivates you to work towards your goals?</label>
+            <textarea id="motivation" name="motivation" required></textarea>
+
+            <label for="barriers">Is there anything stopping you from reaching your goals?</label>
+            <textarea id="barriers" name="barriers" required></textarea>
+
+            <label for="occupation">What is your occupation?</label>
+            <input type="text" id="occupation" name="occupation" required>
+
+            <label for="activityLevel">How would you describe your current activity level?</label>
+            <select id="activityLevel" name="activityLevel" required>
+                <option value="Sedentary">Sedentary</option>
+                <option value="Lightly active">Lightly active</option>
+                <option value="Moderately active">Moderately active</option>
+                <option value="Very active">Very active</option>
+            </select>
+
+            <label for="diet">Do you follow a specific diet or eating pattern? If yes, please describe:</label>
+            <textarea id="diet" name="diet"></textarea>
+
+            <label for="commitment">On a scale of 1 to 10, how committed are you to achieving your goals?</label>
+            <input type="number" id="commitment" name="commitment" min="1" max="10" required>
+                   <!-- Exercise History -->
+            <div class="section-title">Exercise History</div>
+            <label for="exercise">Do you currently exercise?</label>
+            <select id="exercise" name="exercise" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="exerciseDetails">If yes, what type of exercise do you currently do and how often?</label>
+            <textarea id="exerciseDetails" name="exerciseDetails"></textarea>
+
+            <label for="trainerExperience">Have you worked with a personal trainer before?</label>
+            <select id="trainerExperience" name="trainerExperience" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="likesDislikes">Are there any exercises you enjoy or dislike?</label>
+            <textarea id="likesDislikes" name="likesDislikes"></textarea>
+
+            <label for="sports">Do you participate in any sports or recreational activities?</label>
+            <textarea id="sports" name="sports"></textarea>
+
+            <!-- Health Information -->
+            <div class="section-title">Health Information</div>
+            <label for="health">Do you have any current injuries, illnesses, or medical conditions?</label>
+            <textarea id="health" name="health" required></textarea>
+
+            <label for="limitations">Do you have any physical limitations or chronic pain?</label>
+            <textarea id="limitations" name="limitations"></textarea>
+
+            <label for="medications">Are you currently taking any medications?</label>
+            <textarea id="medications" name="medications"></textarea>
+
+            <label for="medicalHistory">Do you have a history of medical conditions? (E.g., Heart Disease, Diabetes, etc.):</label>
+            <textarea id="medicalHistory" name="medicalHistory" placeholder="E.g., Heart disease, Diabetes, etc."></textarea>
+
+            <label for="physicianClearance">Have you been cleared by a physician to exercise?</label>
+            <select id="physicianClearance" name="physicianClearance" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="Not applicable">Not applicable</option>
+            </select>
+
+            <!-- Preferences -->
+            <div class="section-title">Preferences</div>
+            <label for="trainingTime">Preferred training times:</label>
+            <select id="trainingTime" name="trainingTime" required>
+                <option value="Morning">Morning</option>
+                <option value="Afternoon">Afternoon</option>
+                <option value="Evening">Evening</option>
+                <option value="Weekdays">Weekdays</option>
+                <option value="Weekends">Weekends</option>
+            </select>
+
+            <label for="trainingPreference">Do you prefer one-on-one or group training?</label>
+            <select id="trainingPreference" name="trainingPreference" required>
+                <option value="One-on-one">One-on-one</option>
+                <option value="Group training">Group training</option>
+            </select>
+
+            <label for="sessionsPerWeek">How many sessions per week are you planning to commit to?</label>
+            <input type="number" id="sessionsPerWeek" name="sessionsPerWeek" required>
+
+            <label for="additionalInfo">Is there anything else you'd like your trainer to know?</label>
+            <textarea id="additionalInfo" name="additionalInfo"></textarea>
+
+         <!-- Waiver and Submit -->
+            <div>
+                <input type="checkbox" id="waiver" name="waiver" required>
+                <label for="waiver">I certify that the information provided above is accurate and complete to the best of my knowledge.</label>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
